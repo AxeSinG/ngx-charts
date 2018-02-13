@@ -16,6 +16,7 @@ var ChartComponent = /** @class */ (function () {
         this.tooltipService = tooltipService;
         this.showLegend = false;
         this.animations = true;
+        this.isFullWidth = false;
         this.legendLabelClick = new EventEmitter();
         this.legendLabelActivate = new EventEmitter();
         this.legendLabelDeactivate = new EventEmitter();
@@ -28,11 +29,13 @@ var ChartComponent = /** @class */ (function () {
         var legendColumns = 0;
         if (this.showLegend) {
             this.legendType = this.getLegendType();
-            if (this.legendType === 'scaleLegend') {
-                legendColumns = 1;
-            }
-            else {
-                legendColumns = 2;
+            if (!this.isFullWidth) {
+                if (this.legendType === 'scaleLegend') {
+                    legendColumns = 1;
+                }
+                else {
+                    legendColumns = 2;
+                }
             }
         }
         var chartColumns = 12 - legendColumns;
@@ -83,6 +86,10 @@ var ChartComponent = /** @class */ (function () {
         Input(),
         __metadata("design:type", Boolean)
     ], ChartComponent.prototype, "animations", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Object)
+    ], ChartComponent.prototype, "isFullWidth", void 0);
     __decorate([
         Output(),
         __metadata("design:type", EventEmitter)

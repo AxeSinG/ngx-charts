@@ -12,6 +12,7 @@ export declare class ChartComponent implements OnChanges {
     colors: any;
     activeEntries: any[];
     animations: boolean;
+    isFullWidth: boolean;
     legendLabelClick: EventEmitter<any>;
     legendLabelActivate: EventEmitter<any>;
     legendLabelDeactivate: EventEmitter<any>;
