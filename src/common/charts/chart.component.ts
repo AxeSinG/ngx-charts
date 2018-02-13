@@ -71,6 +71,7 @@ export class ChartComponent implements OnChanges {
   @Input() colors: any;
   @Input() activeEntries: any[];
   @Input() animations: boolean = true;
+  @Input() isFullWidth = false;
 
   @Output() legendLabelClick: EventEmitter<any> = new EventEmitter();
   @Output() legendLabelActivate: EventEmitter<any> = new EventEmitter();
@@ -95,10 +96,12 @@ export class ChartComponent implements OnChanges {
     if (this.showLegend) {
       this.legendType = this.getLegendType();
 
-      if (this.legendType === 'scaleLegend') {
-        legendColumns = 1;
-      } else {
-        legendColumns = 2;
+      if (!this.isFullWidth) {
+        if (this.legendType === 'scaleLegend') {
+          legendColumns = 1;
+        } else {
+          legendColumns = 2;
+        }
       }
     }
 
